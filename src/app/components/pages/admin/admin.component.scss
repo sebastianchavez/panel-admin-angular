@@ -1,0 +1,26 @@
+.container-menu {
+    display: flex;
+    height: 100vh;
+}
+
+.nav-menu {
+    width: 100%;
+}
+
+// .not-visible {
+//     transition: all .5s ease;
+//     width: 5em;
+// }
+
+// @media (max-width: 767px) {
+//     .side-menu {
+//         display: none;
+//         width: 0em;
+//     }
+
+//     .block-side-menu {
+//         transition: all .5s ease;
+//         display: block;
+//         width: auto;
+//     }
+// }

@@ -1,0 +1,15 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-sidebar" style="width: auto; height: 100%;">
+    <div class="text-center">
+        <a *ngIf="state" style="text-decoration: none;" class="text-white" routerLink="/">Admin</a>
+        <img *ngIf="!state" src="assets/icons/globo.png" style="width: 25px; height: 25px;" alt="">
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li *ngFor="let m of menu" class="nav-item">
+            <a [routerLink]="m.route" class="nav-link text-white" aria-current="page">
+                <i [class]="m.icon" aria-hidden="true"></i>
+                {{state ? m.text : ''}}
+            </a>
+        </li>
+    </ul>
+</div>

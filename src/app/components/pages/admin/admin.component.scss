@@ -7,20 +7,32 @@
     width: 100%;
 }
 
+.container-page {
+    display: block;
+    position: absolute;
+    height: 90vh;
+    margin-top: 10vh;
+    width: 70%;
+    margin-left: 18em;
+    transition: all .5s ease;
+}
+
+.container-page-full {
+    margin-left: 7em;
+    transition: all .5s ease;
+    width: 90%;
+}
+
+
+
 // .not-visible {
 //     transition: all .5s ease;
 //     width: 5em;
 // }
 
-// @media (max-width: 767px) {
-//     .side-menu {
-//         display: none;
-//         width: 0em;
-//     }
-
-//     .block-side-menu {
-//         transition: all .5s ease;
-//         display: block;
-//         width: auto;
-//     }
-// }
+@media (max-width: 767px) {
+    .container-page {
+        display: flex;
+        margin-left: 1em;
+    }
+}

@@ -10,18 +10,7 @@ export class ResponsiveSidemenuComponent implements OnInit {
 
   @Output() changeState: EventEmitter<any> = new EventEmitter();
   @Input() state: boolean = false;
-  @Input() menu: IMenu[] = [
-    {
-      text: 'Dashboards',
-      route: '/',
-      icon: 'fa fa-home'
-    },
-    {
-      text: 'Home',
-      route: '/',
-      icon: 'fa fa-home'
-    }
-  ];
+  @Input() menu: IMenu[] = [];
 
   constructor() { }
 

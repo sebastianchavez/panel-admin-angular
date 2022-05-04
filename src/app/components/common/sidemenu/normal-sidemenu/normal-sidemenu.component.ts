@@ -9,18 +9,7 @@ import { IMenu } from '../../../../models/interfaces/menu.interface';
 export class NormalSidemenuComponent implements OnInit {
 
   @Input() state: boolean = true;
-  @Input() menu: IMenu[] = [
-    {
-      text: 'Dashboards',
-      route: '/',
-      icon: 'fa fa-home'
-    },
-    {
-      text: 'Home',
-      route: '/',
-      icon: 'fa fa-home'
-    }
-  ];
+  @Input() menu: IMenu[] = [];
   constructor() { }
 
   ngOnInit(): void {

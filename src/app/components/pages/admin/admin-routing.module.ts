@@ -5,8 +5,14 @@ import { AdminComponent } from './admin.component';
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent
-  }
+    component: AdminComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({

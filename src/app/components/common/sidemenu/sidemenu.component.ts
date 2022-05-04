@@ -12,8 +12,8 @@ export class SidemenuComponent implements OnInit {
   @Input() state: boolean = true;
   @Input() menu: IMenu[] = [
     {
-      text: 'Dashboards',
-      route: '/',
+      text: 'Home',
+      route: '/home',
       icon: 'fa fa-home'
     },
     {

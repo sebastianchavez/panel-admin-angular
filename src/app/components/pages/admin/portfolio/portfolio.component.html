@@ -1,0 +1,243 @@
+<div class="container pt-4 pb-4">
+    <div class="card card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-success" (click)="openModal(template)">
+                    Agregar
+                </button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2">
+                <select class="form-control" [(ngModel)]="limit" (change)="getMyPortfolio()">
+                    <option *ngFor="let l of limits" [value]="l.value">{{l.text}}</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <table class="table table-hover table-borderer mt-3">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Imágenes</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of projects; let i1 = index">
+                        <td>{{p.title}}</td>
+                        <td>{{p.category}}</td>
+                        <td>
+                            <img [src]="p.images[0].image" style="max-width: 100px; max-height: 100px;" alt="...">
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-dark m-1" tooltip="Ver"
+                                (click)="openModalView(templateView, p)">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-dark m-1" tooltip="Editar"
+                                (click)="openModalEdit(template,p)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-dark m-1" tooltip="Eliminar"
+                                (click)="deleteProject(p._id, i1)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"
+            (pageChanged)="pageChanged($event)" [itemsPerPage]="limit">
+        </pagination>
+    </div>
+</div>
+
+<ng-template #templateView>
+    <div class="modal-body">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" *ngFor="let p of project.images; let i = index">
+                <div class="carousel-item {{ i == imgSelected ? 'active' : ''}}">
+                    <img [src]="p.image" class="d-block w-100">
+                </div>
+            </div>
+            <button *ngIf="project.images.length > 1" class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExampleControls" data-bs-slide="prev" (click)="selectImg(-1)">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button *ngIf="project.images.length > 1" class="carousel-control-next" type="button"
+                data-bs-target="#carouselExampleControls" data-bs-slide="next" (click)="selectImg(1)">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="mt-4">
+            <p>{{project.description}}</p>
+        </div>
+
+        <div class="technologies">
+            <div *ngFor="let t of project.technologies; let i = index">
+                <span class="badge bg-{{t.color}}">{{t.title}}</span>
+            </div>
+        </div>
+
+        <div class="mt-4" *ngIf="project.links && project.links.length > 0">
+            <h4>links</h4>
+            <div *ngFor="let l of project.links; let i = index" class="form-group">
+                <a [href]="l.url">{{l.name}}</a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ isUpdate ? 'Actualizar proyecto' : 'Nuevo proyecto' }}</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit(portfolioForm.value)">
+            <div class="form-group">
+                <label for="">Nombre de proyecto</label>
+                <input type="text" class="form-control" formControlName="title"
+                    [ngClass]="{ 'is-invalid': submitted && f.title.errors  }">
+                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                    <div *ngIf="f.title.errors && f.title.errors.required">Nombre es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Categoría</label>
+                <input type="text" class="form-control" formControlName="category"
+                    [ngClass]="{ 'is-invalid': submitted && f.category.errors  }">
+                <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                    <div *ngIf="f.category.errors && f.category.errors.required">Categoría es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Descripción</label>
+                <textarea name="" class="form-control" rows="3" formControlName="description"
+                    [ngClass]="{ 'is-invalid': submitted && f.description.errors  }"></textarea>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors && f.description.errors.required">Descripción es requerida</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mt-3">
+                        <div class="card card-body">
+                            <div class="form-group">
+                                <label for="">Nombre de link</label>
+                                <input type="text" class="form-control" id="nameLink">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Link</label>
+                                <input type="text" class="form-control" id="url">
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button type="button" class="btn btn-dark" (click)="addLink()">
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <div class="card card-body">
+                            <div *ngFor="let l of links; let i = index" class="form-group">
+                                <a class="pointer" (click)="deleteLink(i)">{{l.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-3">
+                        <div class="card card-body">
+                            <div class="form-group">
+                                <label for="">Tecnología</label>
+                                <ng-select notFoundText="No encontrado" formControlName="technology">
+                                    <ng-option *ngFor="let t of technologies" [value]="t.value">{{t.text}}</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Color</label>
+                                <select class="form-control" formControlName="color">
+                                    <option class="bg-primary" value="primary">primary</option>
+                                    <option class="bg-secondary" value="secondary">secondary</option>
+                                    <option class="bg-success" value="success">success</option>
+                                    <option class="bg-danger" value="danger">danger</option>
+                                    <option class="bg-warning" value="warning">warning</option>
+                                    <option class="bg-info" value="info">info</option>
+                                    <option class="bg-dark" value="dark">dark</option>
+                                </select>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button type="button" class="btn btn-dark" (click)="addTechnology()">
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <div class="card card-body">
+                            <div class="technologies">
+                                <div *ngFor="let t of myTechnologies; let i = index">
+                                    <span (click)="deleteTechnology(i)"
+                                        class="pointer badge bg-{{t.color}}">{{t.title}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <div class="card card-body">
+                            <div class="container-images">
+                                <input type="file" (change)="onSelectImage($event)" style="display: none;"
+                                    accept="image/png, image/jpeg" #fileInput>
+                                <button type="button" class="btn btn-outline-dark" tooltip="Agregar imagen"
+                                    (click)="fileInput.click()">
+                                    +
+                                </button>
+                                <div *ngFor="let i of images; let index = index">
+                                    <div class="container-img">
+                                        <div class="img" tooltip="Ver"
+                                            [ngStyle]="{'background-image': 'url(' + i.image + ')'}"
+                                            (click)="openImage(i.image)">
+                                        </div>
+                                        <div class="delete-img pointer" (click)="deleteImage(index)" tooltip="Eliminar">
+                                            x</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input formControlName="inStore" class="form-check-input" type="checkbox" value=""
+                            id="checkInStore">
+                        <label class="form-check-label pointer" for="checkInStore">
+                            En mi tienda
+                        </label>
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button [disabled]="btnLoad" type="submit" class="btn btn-success" (click)="addLink()">
+                            {{ isUpdate ? 'Actualizar proyecto' : 'Guardar proyecto'}}
+                            <div *ngIf="btnLoad" class="spinner-border spinner-border-sm ms-2" role="status"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<!-- Modal image -->
+<div id="myModal" class="modal-img">
+    <span class="modal-img-close">&times;</span>
+    <img class="modal-img-content" src="{{ imgModal }}" id="img01" />
+    <div id="caption"></div>
+</div>

@@ -10,6 +10,18 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'microservices',
+        loadChildren: () => import('./microservices/microservices.module').then(m => m.MicroservicesModule)
+      },
+      {
+        path: 'easycook',
+        loadChildren: () => import('./easycook/easycook.module').then(m => m.EasycookModule)
+      },
+      {
+        path: 'portfolio',
+        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
       }
     ]
   },

@@ -1,4 +1,4 @@
-.nav-item:hover {
+.nav-link:hover {
     background-color: #9FA2B4;
     opacity: .8;
     border-radius: 4px;
@@ -6,4 +6,13 @@
 
 .bg-sidebar {
     background-color: #363740;
+}
+
+.submenu {
+    opacity: .8;
+    border-left: .6px solid #9FA2B4;
+    border-right: .6px solid #9FA2B4;
+    border-bottom: .6px solid #9FA2B4;
+    border-end-end-radius: 4px;
+    border-end-start-radius: 4px;
 }

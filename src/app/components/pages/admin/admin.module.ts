@@ -5,6 +5,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { SidemenuModule } from '../../common/sidemenu/sidemenu.module';
 import { NavbarModule } from '../../common/navbar/navbar.module';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { EasycookComponent } from './easycook/easycook.component';
+import { MicroservicesComponent } from './microservices/microservices.component';
 
 
 @NgModule({

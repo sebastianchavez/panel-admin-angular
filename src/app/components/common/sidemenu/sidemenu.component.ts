@@ -12,14 +12,31 @@ export class SidemenuComponent implements OnInit {
   @Input() state: boolean = true;
   @Input() menu: IMenu[] = [
     {
-      text: 'Home',
-      route: '/home',
-      icon: 'fa fa-home'
+      text: 'Microservicios',
+      route: '/microservices',
+      icon: 'fa fa-server'
     },
+    // TODO: desarrollar mantenedor de easycook
+    // {
+    //   text: 'Easy Cook',
+    //   route: '/easycook',
+    //   icon: 'fa fa-cutlery',
+    //   hasSubmenu: true,
+    //   submenu: [
+    //     {
+    //       text: 'Usuarios',
+    //       route: '/easycook/users'
+    //     },
+    //     {
+    //       text: 'Categorias',
+    //       route: '/easycook/categories'
+    //     }
+    //   ]
+    // },
     {
-      text: 'Home',
-      route: '/',
-      icon: 'fa fa-home'
+      text: 'Mi portafolio',
+      route: '/portfolio',
+      icon: 'fa fa-briefcase'
     }
   ];
 

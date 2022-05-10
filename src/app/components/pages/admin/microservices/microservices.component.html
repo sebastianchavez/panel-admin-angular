@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let s of services" class="col-md-6">
+            <div class="alert" [ngClass]="{'alert-success' : s.state,  'alert-danger': !s.state}" role="alert">
+                <h4 class="alert-heading">{{s.service}}</h4>
+                <p>{{s.description}}</p>
+                <hr>
+                <p class="mb-0">Estado: {{ s.state ? 'Disponible' : 'No disponible'}}</p>
+                <br>
+                <div *ngIf="!s.state && s.error != ''">
+                    <strong>Error:</strong> {{s.error}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

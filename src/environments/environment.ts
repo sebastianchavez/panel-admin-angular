@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  debbug: true,
+  apiEmail: 'https://schavez-dev.com/ms-email/',
+  apiS3: 'https://schavez-dev.com/ms-s3/',
+  apiPushnotification: 'https://schavez-dev.com/ms-pushnotification/',
+  apiEasycook: 'https://schavez-dev.com/easycook/',
+  apiPortfolio: 'http://localhost:3003/',
+  userId: '6020799f4ba6301fa4be6c0b'
 };
 
 /*

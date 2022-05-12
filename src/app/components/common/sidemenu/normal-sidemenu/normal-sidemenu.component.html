@@ -5,11 +5,24 @@
     </div>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li *ngFor="let m of menu" class="nav-item">
-            <a [routerLink]="m.route" class="nav-link text-white" aria-current="page">
-                <i [class]="m.icon" aria-hidden="true"></i>
+        <li *ngFor="let m of menu; let i = index" class="nav-item">
+            <a *ngIf="!m.hasSubmenu" [routerLink]="m.route" class="nav-link text-white" aria-current="page">
+                <i [class]="m.icon + ' me-2'" aria-hidden="true"></i>
                 {{state ? m.text : ''}}
             </a>
+            <a *ngIf="m.hasSubmenu" class="nav-link text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i [class]="m.icon + ' me-2'" aria-hidden="true"></i>
+                {{state ? m.text : ''}}
+            </a>
+            <div *ngIf="m.hasSubmenu && state" class="collapse submenu" id="collapseExample">
+                <div *ngFor="let smenu of m.submenu">
+                    <a [routerLink]="smenu.route" class="nav-link text-white" aria-current="page">
+                        <i [class]="smenu.icon + ' me-2'" aria-hidden="true"></i>
+                        {{smenu.text}}
+                    </a>
+                </div>
+            </div>
         </li>
     </ul>
 </div>

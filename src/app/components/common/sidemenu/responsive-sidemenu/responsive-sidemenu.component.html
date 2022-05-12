@@ -9,7 +9,7 @@
     <ul class="nav nav-pills flex-column mb-auto">
         <li *ngFor="let m of menu" class="nav-item">
             <a [routerLink]="m.route" class="nav-link text-white" aria-current="page">
-                <i [class]="m.icon" aria-hidden="true"></i>
+                <i [class]="m.icon + ' me-2'" aria-hidden="true"></i>
                 {{m.text}}
             </a>
         </li>

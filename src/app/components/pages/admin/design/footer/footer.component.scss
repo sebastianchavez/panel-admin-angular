@@ -1,0 +1,21 @@
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    bottom: 0px;
+    background-color: #222;
+    color: white;
+}
+
+.text {
+    color: white;
+    text-align: center;
+}
+
+.transparent{
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+}

@@ -1,0 +1,13 @@
+<header *ngIf="header">
+    <video loop id="headerVideo">
+        <source src="assets/videos/header.mp4" type="video/mp4">
+    </video>
+    <div class="content animate__animated animate__fadeInUp">
+        <h1 *ngIf="!edit.title" (click)="editing('title')">{{header.title}}</h1>
+        <input *ngIf="edit.title" (blur)="editing('')" type="text" class="form-control transparent title" id="title"
+            [(ngModel)]="header.title">
+        <h2 *ngIf="!edit.subtitle" (click)="editing('subtitle')">{{header.subtitle}}</h2>
+        <input *ngIf="edit.subtitle" (blur)="editing('')" type="text" class="form-control transparent subtitle"
+            id="subtitle" [(ngModel)]="header.subtitle">
+    </div>
+</header>

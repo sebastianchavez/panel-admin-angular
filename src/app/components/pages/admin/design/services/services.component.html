@@ -1,0 +1,8 @@
+<section class="container-services" *ngIf="servicesPage">
+    <div class="bg-image" [ngStyle]="{'background-image': 'url(' + servicesPage.background + ')'}"></div>
+    <div class="content">
+        <div class="container pt-4 animate__animated animate__fadeInUp">
+            <app-card-services [servicesPage]="servicesPage"></app-card-services>
+        </div>
+    </div>
+</section>

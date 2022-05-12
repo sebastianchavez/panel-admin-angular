@@ -1,0 +1,74 @@
+<!-- <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css"> -->
+
+<section class="container-home" *ngIf="homePage">
+    <div class="bg-image" [ngStyle]="{'background-image': 'url(' + homePage.background + ')'}">
+    </div>
+    <div class="content">
+        <div class="container pt-4">
+            <div class="animate__animated animate__fadeInUp">
+                <app-card (editText)="changeCardHome($event)" (clickBtn)="goToPage(homePage.about.router)"
+                    [title]="homePage.about.title" [description]="homePage.about.description"
+                    [btnText]="homePage.about.btn"></app-card>
+            </div>
+            <div class="row" style="min-height: 300px">
+                <div *ngFor="let card of homePage.cards; let i = index"
+                    class="col-md-4 mt-4 animate__animated animate__fadeInUp">
+                    <app-card-home-service (editText)="changeCardService($event, i)" (deletedCard)="deletedCard(i)"
+                        (clickBtn)="goToPage(card.router)" [title]="card.title" [descriptions]="card.descriptions"
+                        [btnText]="card.btn">
+                    </app-card-home-service>
+                </div>
+                <div class="p-4 col-md-4">
+                    <div tooltip="Agregar" class="animate__animated animate__fadeInUp card-template pointer"
+                        (click)="openModal(template)">
+                        <img src="assets/icons/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Nuevo item</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="">Título</label>
+            <input type="text" class="form-control" [(ngModel)]="card.title"
+                [ngClass]="{ 'is-invalid': submitted && card.title.trim() == '' }">
+            <div *ngIf="submitted && card.title.trim() == ''" class="invalid-feedback">
+                <div>Título es requerido</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Descripción</label>
+            <input type="text" class="form-control" [(ngModel)]="card.descriptions[0].description"
+                [ngClass]="{ 'is-invalid': submitted && card.descriptions[0].description.trim() == '' }">
+            <div *ngIf="submitted && card.descriptions[0].description.trim() == ''" class="invalid-feedback">
+                <div>Descripción es requerida</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Navegacion de boton</label>
+            <input type="text" placeholder="/contacto" class="form-control" [(ngModel)]="card.router"
+                [ngClass]="{ 'is-invalid': submitted && card.router.trim() == '' }">
+            <div *ngIf="submitted && card.router.trim() == ''" class="invalid-feedback">
+                <div>Navegacion es requerida</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Texto de boton</label>
+            <input type="text" placeholder="Ver mas..." class="form-control" [(ngModel)]="card.btn">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-block btn-success" (click)="addCard()">
+                Agregar
+            </button>
+        </div>
+    </div>
+</ng-template>

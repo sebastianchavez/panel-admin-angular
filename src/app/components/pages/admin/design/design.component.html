@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav">
+                        <li *ngFor="let m of menus; let i = index" class="nav-item">
+                            <a class="nav-link" [ngClass]="{'text-bold' : selected == i}" [routerLink]=""
+                                (click)="selectPage(i, m.router)">{{m.text}}</a>
+                        </li>
+                    </ul>
+                    <div class="mt-3">
+                        <div *ngIf="selected == 0">
+                            <app-home [homePage]="homePage"></app-home>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('home')">Guardar Cambios</button>
+                        </div>
+
+                        <div *ngIf="selected == 1">
+                            <app-about-us [aboutPage]="aboutPage"></app-about-us>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('about')">Guardar Cambios</button>
+                        </div>
+
+                        <div *ngIf="selected == 2">
+                            <app-services [servicesPage]="servicesPage"></app-services>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('services')">Guardar
+                                Cambios</button>
+                        </div>
+                        <div *ngIf="selected == 3">
+                            <app-contact [contactPage]="contactPage"></app-contact>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('contact')">Guardar Cambios</button>
+                        </div>
+                        <div *ngIf="selected == 4">
+                            <app-header [header]="header"></app-header>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('header')">Guardar Cambios</button>
+                        </div>
+                        <div *ngIf="selected == 5">
+                            <app-footer [footer]="footer"></app-footer>
+                            <br>
+                            <button class="btn btn-success" (click)="saveChangePage('footer')">Guardar Cambios</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

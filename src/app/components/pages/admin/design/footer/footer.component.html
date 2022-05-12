@@ -1,0 +1,5 @@
+<footer *ngIf="footer">
+    <label *ngIf="!edit.text" (click)="editing('text')" class="pointer">{{footer.text}}</label>
+    <input *ngIf="edit.text" (blur)="editing('')" type="text" class="form-control transparent text" id="text"
+        [(ngModel)]="footer.text">
+</footer>

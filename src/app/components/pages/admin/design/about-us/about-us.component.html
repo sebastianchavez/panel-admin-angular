@@ -1,0 +1,78 @@
+<section class="container-about" *ngIf="aboutPage">
+    <div class="bg-image" [ngStyle]="{'background-image': 'url(' + aboutPage.background + ')'}"></div>
+    <div class="content">
+        <div class="container pt-4">
+            <div class="animate__animated animate__fadeInUp">
+                <app-card [title]="aboutPage.about.title" (editText)="changeCardHome($event)"
+                    [description]="aboutPage.about.description"></app-card>
+                <div *ngFor="let c of aboutPage.cards; let i = index">
+                    <app-card-about-us (editText)="changeCard($event, i)" [image]="c.image" [text]="c.text"
+                        [position]="i % 2 == 0 ? 'right': 'left'">
+                    </app-card-about-us>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <h4 *ngIf="!edit.text" (click)="editing('teamTitle')">{{aboutPage.teamTitle}}</h4>
+                <input *ngIf="edit.text" type="text" class="form-control transparent team-title" id="teamTitle"
+                    [(ngModel)]="aboutPage.teamTitle">
+            </div>
+            <div class="row">
+                <div *ngFor="let t of aboutPage.team; let i = index"
+                    class="col-md-6 center mt-4 animate__animated animate__fadeInUp">
+                    <app-card-about-us-team (deleteCard)="deleteTeam(i)" [title]="t.title" [description]="t.description"
+                        [image]="t.image">
+                    </app-card-about-us-team>
+                </div>
+                <div class="col-md-6 center mt-4 animate__animated animate__fadeInUp">
+                    <div tooltip="Agregar" class="pointer" (click)="openModal(template)">
+                        <img src="assets/icons/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Nuevo usuario</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="container-img">
+                <input type="file" style="display: none;" accept="image/png, image/jpeg" #fileInput
+                    (change)="onSelectImage($event)">
+                <img *ngIf="!loadImg" (click)="fileInput.click()" src="assets/img/avatars/no-profile.jpg"
+                    class="img-profile pointer" alt="">
+                <div *ngIf="loadImg" class="spinner-border" style="width: 3em; height: 3em; font-size: 3em;"
+                    role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Título</label>
+            <input type="text" class="form-control" [(ngModel)]="card.title"
+                [ngClass]="{ 'is-invalid': submitted && card.title.trim() == '' }">
+            <div *ngIf="submitted && card.title.trim() == ''" class="invalid-feedback">
+                <div>Título es requerido</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Descripción</label>
+            <input type="text" class="form-control" [(ngModel)]="card.description"
+                [ngClass]="{ 'is-invalid': submitted && card.description.trim() == '' }">
+            <div *ngIf="submitted && card.description.trim() == ''" class="invalid-feedback">
+                <div>Descripción es requerida</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-block btn-success" (click)="addTeam()">
+                Agregar
+            </button>
+        </div>
+    </div>
+</ng-template>

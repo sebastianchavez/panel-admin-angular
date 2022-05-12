@@ -1,0 +1,127 @@
+{
+    "header": {
+        "title": "Tecnodesa",
+        "subtitle": "Tecnología para el desarrollo humano",
+        "background": "assets/videos/header.mp4"
+    },
+    "footer": {
+        "text": "© 2021 Tecnodesa"
+    },
+    "menus": [
+        {
+            "text": "¿Quienes somos?",
+            "router": "/nosotros"
+        },
+        {
+            "text": "Servicios",
+            "router": "/servicios"
+        },
+        {
+            "text": "Contactanos",
+            "router": "/contacto"
+        }
+    ],
+    "home": {
+        "background": "assets/images/bg-home.jpg",
+        "about": {
+            "title": "¿Quienes somos?",
+            "description": "somos una empresa dedicada a la tecnología e innovación",
+            "router": "/nosotros",
+            "btn": "Ver mas..."
+        },
+        "cards": [
+            {
+                "title": "Desarrollo de software",
+                "descriptions": [
+                    {
+                        "description": "Nos especializamos en el desarrollo de software."
+                    },
+                    {
+                        "description": "Desarrollamos el producto a tu medida."
+                    },
+                    {
+                        "description": "Tienda online con administrable de forma sencilla, tu página y aplicación móvil personalizada."
+                    }
+                ],
+                "router": "/servicios",
+                "btn": "Ver mas..."
+            },
+            {
+                "title": "Contactanos",
+                "descriptions": [
+                    {
+                        "description": "En caso de que tengas dudas puedes dirigirte a la sección de contacto y enviarnos un mensaje."
+                    },
+                    {
+                        "description": "Responderemos lo antes posible tus inquietudas."
+                    }
+                ],
+                "router": "/contacto",
+                "btn": "Ver mas..."
+            }
+        ]
+    },
+    "about": {
+        "background": "assets/images/bg-about.jpg",
+        "about": {
+            "title": "¿Quienes somos?",
+            "description": ""
+        },
+        "cards": [
+            {
+                "image": "assets/images/about01.jpg",
+                "nameImage": "about01",
+                "text": "A mediados del año 2021 los hermanos Chavez deciden unir fuerzas y formar una empresa dedicada al desarrollo de software, a apoyar a emprendedores con la tecnología necesaria para lograr sus sueños."
+            },
+            {
+                "image": "assets/images/about02.jpg",
+                "nameImage": "about02",
+                "text": "Como proposito de Tecnodesa se quiere participar en proyectos desafiantes y que ayuden a la humanidad tanto para clientes como propios de Tecnodesa que se encuentran en desarrollo."
+            },
+            {
+                "image": "assets/images/about03.jpg",
+                "nameImage": "about03",
+                "text": "Nos encontramos investigando y desarrollando aplicaciones para el beneficio de las personas, para el entretenimiento y otros temas por lo que pronto tendremos noticias en la página!"
+            }
+        ],
+        "teamTitle": "Cofundadores",
+        "team": [
+            {
+                "title": "Sebastián Chavez",
+                "description": "Profesional en el area de ingeniería de software con años de experiencia, apasionado por el desarrollo de software",
+                "image": "assets/images/seba.jpg"
+            },
+            {
+                "title": "Ignacio Chavez",
+                "description": "Profesional en el area de ingeniería de software con años de experiencia, con amplios conocimientos en informática",
+                "image": "assets/images/nacho.jpg"
+            }
+        ]
+    },
+    "services": {
+        "background": "assets/images/bg-services.jpg",
+        "title": "Servicios",
+        "description": "Nos enfocamos en ofrecer servicios de calidad y según tus necesidades. Aqui puedes realizar una cotización, según tus necesidades puedes tener una respuesta inmediata o podemos realizar un estudio para poder ofrecer una solucion acorde a tus necesidades.",
+        "services": [
+            {
+                "id": 1,
+                "title": "Creación y mantenimiento de aplicaciones",
+                "smallDescription": "Tenemos lo que necesites y como lo necesites",
+                "description": "Tenemos lo que necesites y como lo necesites. Creamos un plan de estudio basado en lo que necesites y realizamos productos según tus necesidades.",
+                "image": "assets/images/services01.jpg"
+            },
+            {
+                "id": 2,
+                "title": "Venta de páginas web y móviles",
+                "smallDescription": "Crea tu tienda virtual",
+                "description": "Crea tu tienda virtual o tu página personalizada para mostrar tu contenido en internet en donde podrás interactuar con tus clientes y manejar tu contenido de forma personalizada.",
+                "image": "assets/images/services02.jpg"
+            }
+        ]
+    },
+    "contact": {
+        "background": "assets/images/bg-contacts.jpg",
+        "title": "Contactanos",
+        "description": "Escribenos cualquiera que sea tu inquietud"
+    }
+}

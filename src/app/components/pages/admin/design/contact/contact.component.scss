@@ -1,0 +1,67 @@
+.container-contacts {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #222;
+    color: white;
+    overflow: auto;
+}
+
+.bg-image{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    opacity: .3;
+}
+
+.content {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .bg-image {
+        height: 130vh;
+    }
+
+    .container-contacts{
+        height: 130vh;
+    }
+}
+
+.card {
+    background-color: #303030;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    background-color: #444;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.edit-btn{
+    color: #fff !important;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
+    border: none;
+    outline: none;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 10rem;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
+}

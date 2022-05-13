@@ -1,0 +1,55 @@
+.custom-card{
+    min-height: 2em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.custom-card:hover{
+    background-color: rgba(0, 0, 0, .7);
+}
+
+p{
+    margin: 1.4em 0em;
+    font-size: 1.3em;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
+}
+
+.transparent{
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+}
+
+.title {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.3125rem;
+}
+
+.description{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.edit-btn{
+    color: #fff !important;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
+    border: none;
+    outline: none;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 10rem;
+}

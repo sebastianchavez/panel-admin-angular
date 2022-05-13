@@ -1,0 +1,20 @@
+<div class="custom-card">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
+    <div class="custom-card-body  p-4">
+        <h2 *ngIf="!edit.title" (click)="editing('title')">{{title}}</h2>
+        <input [(ngModel)]="title" *ngIf="edit.title" type="text" class="form-control transparent title"
+            (blur)="editing('')" id="title">
+        <div (click)="editing('description')" *ngIf="!edit.description">
+            <p>
+                {{description}}
+            </p>
+        </div>
+        <textarea [(ngModel)]="description" *ngIf="edit.description" rows="5"
+            class="form-control transparent description" (blur)="editing('')" id="description"></textarea>
+        <div class="form-group">
+            <button class="btn btn-block btn-outline-danger" (click)="deleteUser()">
+                Eliminar
+            </button>
+        </div>
+    </div>
+</div>

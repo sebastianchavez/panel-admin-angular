@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         path: 'microservices',
         loadChildren: () => import('./microservices/microservices.module').then(m => m.MicroservicesModule)
+      },
+      {
+        path: 'design',
+        loadChildren: () => import('./design/design.module').then(m => m.DesignModule)
       }
     ]
   },

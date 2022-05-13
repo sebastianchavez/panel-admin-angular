@@ -1,0 +1,36 @@
+.custom-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    width: 8em;
+    height: 8em;
+    border-radius: 100px;
+}
+
+p {
+    max-width: 200px;
+}
+
+.transparent{
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+}
+
+.title {
+    font-size: 1.75rem;
+    color: white;
+}
+
+.description {
+    color: white;
+    font-size: 0.875rem;
+}

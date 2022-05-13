@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { IMenuDesign } from '../../../models/menus.interface';
-import { IHomePage } from '../../../models/home-page.interface';
-import { LandingService } from '../../../services/landing/landing.service';
-import { IAboutPage } from '../../../models/about-page.interface';
-import { IServicePage } from '../../../models/service-page.interface';
-import { IContactPage } from '../../../models/contact-page.interface';
-import { IHeader } from '../../../models/header.interface';
-import { IFooter } from '../../../models/footer.interface';
-import { LoggerService } from '../../../services/logger/logger.service';
-import { AlertService } from '../../../services/alert/alert.service';
-import { IResponse } from '../../../models/response.interface';
+import { IMenuDesign } from '../../../../models/interfaces/menus.interface';
+import { IHomePage } from '../../../../models/interfaces/home-page.interface';
+import { LandingService } from '../../../../services/landing/landing.service';
+import { IAboutPage } from '../../../../models/interfaces/about-page.interface';
+import { IServicePage } from '../../../../models/interfaces/service-page.interface';
+import { IContactPage } from '../../../../models/interfaces/contact-page.interface';
+import { IHeader } from '../../../../models/interfaces/header.interface';
+import { IFooter } from '../../../../models/interfaces/footer.interface';
+import { LoggerService } from '../../../../services/logger/logger.service';
+import { AlertService } from '../../../../services/alert/alert.service';
+import { IResponse } from '../../../../models/interfaces/response.interface';
 
 @Component({
   selector: 'app-design',
@@ -27,13 +27,13 @@ export class DesignComponent implements OnInit {
     { text: 'Header', router: 'header' },
     { text: 'Footer', router: 'footer' }
   ]
-  selected: number;
-  homePage: IHomePage;
-  aboutPage: IAboutPage;
-  servicesPage: IServicePage;
-  contactPage: IContactPage
-  header: IHeader;
-  footer: IFooter;
+  selected?: number;
+  homePage?: IHomePage;
+  aboutPage?: IAboutPage;
+  servicesPage?: IServicePage;
+  contactPage?: IContactPage
+  header?: IHeader;
+  footer?: IFooter;
   updatePages = {
     about: false,
     home: false,
@@ -184,7 +184,7 @@ export class DesignComponent implements OnInit {
       }
       this.alertService.toast('Cambios guardados con éxito')
       this.logger.log(this.idLog, 'saveChangePage', { info: 'Success', response, updatePages: this.updatePages })
-    } catch (e) {
+    } catch (e: any) {
       const msg = e.error && e.error.message ? e.error.message : 'Problemas al guardar cambios, por favor intente más tarde'
       this.alertService.alert(msg)
       this.logger.error(this.idLog, 'saveChangePage', { info: 'Error', error: e, updatePages: this.updatePages })

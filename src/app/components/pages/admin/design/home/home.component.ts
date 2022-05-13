@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { IHomePage } from '../../../../models/home-page.interface';
+import { IHomePage } from '../../../../../models/interfaces/home-page.interface';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,8 @@ import { IHomePage } from '../../../../models/home-page.interface';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input() homePage: IHomePage;
-  modalRef: BsModalRef;
+  @Input() homePage?: IHomePage;
+  modalRef?: BsModalRef;
   card = {
     title: '',
     descriptions: [{
@@ -28,21 +28,21 @@ export class HomeComponent implements OnInit {
   }
 
   changeCardHome(ev: any) {
-    this.homePage.about.title = ev.title
-    this.homePage.about.description = ev.description
-    this.homePage.about.btn = ev.btnText
+    this.homePage!.about.title = ev.title
+    this.homePage!.about.description = ev.description
+    this.homePage!.about.btn = ev.btnText
     localStorage.setItem('homePage', JSON.stringify(this.homePage))
   }
 
   changeCardService(ev: any, index: number) {
-    this.homePage.cards[index].title = ev.title
-    this.homePage.cards[index].descriptions = ev.descriptions
-    this.homePage.cards[index].btn = ev.btnText
+    this.homePage!.cards[index].title = ev.title
+    this.homePage!.cards[index].descriptions = ev.descriptions
+    this.homePage!.cards[index].btn = ev.btnText
     localStorage.setItem('homePage', JSON.stringify(this.homePage))
   }
 
   deletedCard(index: number) {
-    this.homePage.cards.splice(index, 1)
+    this.homePage!.cards.splice(index, 1)
     localStorage.setItem('homePage', JSON.stringify(this.homePage))
   }
 
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    this.homePage.cards.push(this.card)
-    this.modalRef.hide()
+    this.homePage!.cards.push(this.card)
+    this.modalRef!.hide()
   }
 }

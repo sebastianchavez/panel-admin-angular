@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IServicePage } from '../../../../models/service-page.interface';
+import { IServicePage } from '../../../../../models/interfaces/service-page.interface';
 
 @Component({
   selector: 'app-services',
@@ -8,7 +8,7 @@ import { IServicePage } from '../../../../models/service-page.interface';
 })
 export class ServicesComponent implements OnInit {
 
-  @Input() servicesPage: IServicePage;
+  @Input() servicesPage?: IServicePage;
   constructor() { }
 
   ngOnInit(): void {

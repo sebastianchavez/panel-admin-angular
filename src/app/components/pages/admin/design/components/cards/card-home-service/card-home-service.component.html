@@ -1,0 +1,25 @@
+<div class="custom-card p-4" *ngIf="title != '' || descriptions.length > 0 || btnText != ''">
+    <div class="custom-card-body">
+        <h4 *ngIf="!edit.title" (click)="editing('title')">{{title}}</h4>
+        <input *ngIf="edit.title" (blur)="editing('')" type="text" id="title" [(ngModel)]="title"
+            class="form-control transparent title">
+        <div *ngFor="let d of descriptions; let i = index">
+            <p *ngIf="!edit.description && d.description != ''" (click)="editing('description', i)">
+                {{d.description}}
+            </p>
+            <textarea *ngIf="edit.description" (blur)="editing('')" type="text" [id]="'description_' + i"
+                [(ngModel)]="d.description" class="form-control transparent description">
+            </textarea>
+        </div>
+
+        <button class="btn btn-outline-dark mt-2 mb-5" (click)="addText()">Agregar parrafo</button>
+    </div>
+    <div class="custom-card-footer">
+        <button class="btn btn-primary btn-block" *ngIf="btnText && btnText != ''  && !edit.btn"
+            (click)="editing('btn')">
+            {{btnText}}
+        </button>
+        <input *ngIf="edit.btn" (blur)="editing('')" id="btn" type="text" class="form-control mx-auto edit-btn"
+            [(ngModel)]="btnText">
+    </div>
+</div>

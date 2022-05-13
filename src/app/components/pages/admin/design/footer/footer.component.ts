@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IFooter } from '../../../../models/footer.interface';
+import { IFooter } from '../../../../../models/interfaces/footer.interface';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,7 @@ import { IFooter } from '../../../../models/footer.interface';
 })
 export class FooterComponent implements OnInit {
 
-  @Input() footer: IFooter
+  @Input() footer?: IFooter
   edit = {
     text: false
   }
@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
   }
 
 
-  editing(value) {
+  editing(value: any) {
     switch (value) {
       case 'text':
         this.edit.text = true;

@@ -1,0 +1,37 @@
+<div class="custom-card p-3">
+    <div class="row" style="width: 100%;">
+        <div class="col-md-6" *ngIf="position == 'left'">
+            <div (click)="editing('text')" *ngIf="!edit.text" class="pointer">
+                <p>
+                    {{text}}
+                </p>
+            </div>
+            <div class="form-group" *ngIf="edit.text" style="width: 100%;">
+                <textarea rows="7" (blur)="editing('')" id="text" [(ngModel)]="text"
+                    class="form-control transparent text"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="file" style="display: none;" #fileInput (change)="onSelectImage($event)">
+            <div *ngIf="!edit.image" class="img pointer" [ngStyle]="{'background-image': 'url(' + image + ')'}"
+                (click)="fileInput.click()"></div>
+            <div class="container-img" *ngIf="edit.image">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6" *ngIf="position == 'right'">
+            <div (click)="editing('text2')" *ngIf="!edit.text" class="pointer">
+                <p>
+                    {{text}}
+                </p>
+            </div>
+            <div class="form-group" *ngIf="edit.text" style="width: 100%;">
+                <textarea rows="7" (blur)="editing('')" id="text2" [(ngModel)]="text"
+                    class="form-control transparent text"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,16 +6,14 @@
     <div class="content">
         <div class="container pt-4">
             <div class="animate__animated animate__fadeInUp">
-                <app-card (editText)="changeCardHome($event)" (clickBtn)="goToPage(homePage.about.router)"
-                    [title]="homePage.about.title" [description]="homePage.about.description"
-                    [btnText]="homePage.about.btn"></app-card>
+                <app-card (editText)="changeCardHome($event)" [title]="homePage.about.title"
+                    [description]="homePage.about.description" [btnText]="homePage!.about.btn"></app-card>
             </div>
             <div class="row" style="min-height: 300px">
                 <div *ngFor="let card of homePage.cards; let i = index"
                     class="col-md-4 mt-4 animate__animated animate__fadeInUp">
                     <app-card-home-service (editText)="changeCardService($event, i)" (deletedCard)="deletedCard(i)"
-                        (clickBtn)="goToPage(card.router)" [title]="card.title" [descriptions]="card.descriptions"
-                        [btnText]="card.btn">
+                        [title]="card.title" [descriptions]="card.descriptions" [btnText]="card.btn">
                     </app-card-home-service>
                 </div>
                 <div class="p-4 col-md-4">
@@ -32,7 +30,7 @@
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Nuevo item</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>

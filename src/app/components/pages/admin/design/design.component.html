@@ -6,7 +6,7 @@
                     <ul class="nav">
                         <li *ngFor="let m of menus; let i = index" class="nav-item">
                             <a class="nav-link" [ngClass]="{'text-bold' : selected == i}" [routerLink]=""
-                                (click)="selectPage(i, m.router)">{{m.text}}</a>
+                                (click)="selectPage(i)">{{m.text}}</a>
                         </li>
                     </ul>
                     <div class="mt-3">

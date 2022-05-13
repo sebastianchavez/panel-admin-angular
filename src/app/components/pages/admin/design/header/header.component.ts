@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IHeader } from '../../../../models/header.interface';
+import { IHeader } from '../../../../../models/interfaces/header.interface';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { IHeader } from '../../../../models/header.interface';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() header: IHeader
+  @Input() header?: IHeader
   edit = {
     title: false,
     subtitle: false
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  editing(value) {
+  editing(value: any) {
     switch (value) {
       case 'title':
         this.edit.title = true;

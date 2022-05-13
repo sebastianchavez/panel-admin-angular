@@ -1,0 +1,143 @@
+<div class="custom-card p-4">
+    <div class="text-center mb-3 animate__animated animate__fadeInUp">
+        <h3 *ngIf="!edit.title" (click)="editing('title')">{{servicesPage.title}}</h3>
+        <input *ngIf="edit.title" (blur)="editing('')" type="text" id="title" [(ngModel)]="servicesPage.title"
+            class="form-control transparent title mx-auto">
+    </div>
+    <div class="content visible animate__animated animate__fadeIn" [ngClass]="{ 'inactive' : show != 0 }">
+        <h4 (click)="editing('description')" *ngIf="!edit.description">{{servicesPage.description}}</h4>
+        <textarea rows="4" *ngIf="edit.description" (blur)="editing('')" id="description"
+            [(ngModel)]="servicesPage.description" class="form-control transparent description">
+        </textarea>
+        <div *ngFor="let service of servicesPage.services; let i = index" class="container-service">
+            <img *ngIf="i % 2 == 0" class="mt-3" [src]="service.image" alt="">
+            <div class="mt-3 p-3">
+                <h3 (click)="editing('servicesTitle', i)" *ngIf="!edit.servicesTitle || selected != i">{{service.title}}
+                </h3>
+                <input placeholder="Título" *ngIf="(edit.servicesTitle && selected == i) || service.title == ''"
+                    (blur)="editing('')" type="text" [id]="'title_'+i" [(ngModel)]="service.title"
+                    class="form-control transparent service-title">
+                <h4 (click)="editing('servicesDescription', i)" class="mt-4"
+                    *ngIf="!edit.servicesDescription || selected != i">{{service.smallDescription}}</h4>
+                <textarea placeholder="Descrición" rows="4"
+                    *ngIf="(edit.servicesDescription && selected == i) || service.smallDescription == ''"
+                    (blur)="editing('')" [id]="'description_'+i" [(ngModel)]="service.smallDescription"
+                    class="form-control transparent description">
+                </textarea>
+                <button class="btn btn-primary mt-4" (click)="showService(service.id)">
+                    Cotizar
+                </button>
+            </div>
+            <img *ngIf="i % 2 == 1" class="mt-3" [src]="service.image" alt="">
+        </div>
+    </div>
+    <div *ngFor="let service of servicesPage.services; let i = index">
+        <div class="content visible p-4 animate__animated animate__fadeIn" *ngIf="service.id == show">
+            <div class="mt-3 p-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="mt-3" [src]="service.image" alt="">
+                    </div>
+                    <div class="col-md-6 mt-5">
+                        <h3>{{service.title}}</h3>
+                        <h4 *ngIf="!edit.servicesFullDescription || selected != i"
+                            (click)="editing('servicesFullDescription', i)" class="mt-4">{{service.description}}</h4>
+                        <textarea placeholder="Descrición" rows="4"
+                            *ngIf="(edit.servicesFullDescription && selected == i) || service.description == ''"
+                            (blur)="editing('')" [id]="'fullDescription_'+i" [(ngModel)]="service.description"
+                            class="form-control transparent description">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row mt-3" *ngIf="service.id == 1">
+                    <div class="col-md-5 mx-auto mt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Tienes algun proyecto en curso o una idea?
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="">Documento de proyecto</label>
+                                    <div class="input-group">
+                                        <input type="file" accept="image/png, image/gif, image/jpeg"
+                                            (change)="onSelectImage($event)" style="display: none;" #fileInput>
+                                        <input disabled type="text" class="form-control" placeholder="Archivo">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn-primary" style="border: none;"
+                                                (click)="fileInput.click()">
+                                                <img src="assets/icons/cloud-upload.svg" style="width: 1.5em;" alt="">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select class="form-control">
+                                        <option *ngFor="let t of types" [value]="t.value">{{t.text}}</option>
+                                        <option value="SERVICE">Servicio</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Describe que necesitas</label>
+                                    <textarea cols="3" class="form-control" placeholder="Descripción"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">
+                                        Enviar cotización
+                                    </button>
+                                    <button class="btn btn-secondary btn-block mt-3" (click)="back()">
+                                        Volver
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" *ngIf="service.id == 2">
+                    <div class="col-md-5 mx-auto mt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Quieres emprender con una página personalizada o una tienda online?
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select class="form-control">
+                                        <option *ngFor="let t of types" [value]="t.value">{{t.text}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Aplicación</label>
+                                    <select class="form-control">
+                                        <option *ngFor="let a of applications" [value]="a.value">{{a.text}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Secciones</label>
+                                    <select class="form-control">
+                                        <option *ngFor="let s of sections" [value]="s.value">{{s.text}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option [value]="true">Con panel</option>
+                                        <option [value]="false">Sin panel</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">
+                                        Enviar cotización
+                                    </button>
+                                    <button class="btn btn-secondary btn-block mt-3" (click)="back()">
+                                        Volver
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

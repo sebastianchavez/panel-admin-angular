@@ -1,0 +1,17 @@
+<div class="custom-card" *ngIf="description != '' || title != '' || btnText != ''">
+    <div class="text-center p-4">
+        <h4 *ngIf="!edit.title" (click)="editing('title')">{{title}}</h4>
+        <input *ngIf="edit.title" (blur)="editing('')" type="text" id="title" [(ngModel)]="title"
+            class="form-control transparent title mx-auto">
+        <p *ngIf="!edit.description" (click)="editing('description')">
+            {{description}}
+        </p>
+        <textarea *ngIf="edit.description" (blur)="editing('')" cols="3" [(ngModel)]="description"
+            class="form-control transparent description mx-aut" id="description"></textarea>
+        <button class="btn btn-primary" *ngIf="btnText && btnText != '' && !edit.btn" (click)="editing('btn')">
+            {{btnText}}
+        </button>
+        <input *ngIf="edit.btn" (blur)="editing('')" id="btn" type="text" class="form-control mx-auto edit-btn"
+            [(ngModel)]="btnText">
+    </div>
+</div>

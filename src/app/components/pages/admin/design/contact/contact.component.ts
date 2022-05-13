@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IContactPage } from '../../../../models/contact-page.interface';
+import { IContactPage } from '../../../../../models/interfaces/contact-page.interface';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +8,7 @@ import { IContactPage } from '../../../../models/contact-page.interface';
 })
 export class ContactComponent implements OnInit {
 
-  @Input() contactPage: IContactPage
+  @Input() contactPage?: IContactPage
 
   constructor() { }
 
@@ -16,8 +16,8 @@ export class ContactComponent implements OnInit {
   }
 
   changeCardHome(ev: any) {
-    this.contactPage.title = ev.title
-    this.contactPage.description = ev.description
+    this.contactPage!.title = ev.title
+    this.contactPage!.description = ev.description
     localStorage.setItem('contactPage', JSON.stringify(this.contactPage))
   }
 

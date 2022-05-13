@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { IAboutPage } from '../../../../models/about-page.interface';
-import { LoggerService } from '../../../../services/logger/logger.service';
-import { LandingService } from '../../../../services/landing/landing.service';
+import { IAboutPage } from '../../../../../models/interfaces/about-page.interface';
+import { LoggerService } from '../../../../../services/logger/logger.service';
+import { LandingService } from '../../../../../services/landing/landing.service';
 
 @Component({
   selector: 'app-about-us',
@@ -12,8 +12,8 @@ import { LandingService } from '../../../../services/landing/landing.service';
 export class AboutUsComponent implements OnInit {
 
   idLog: string = 'AboutUsComponent'
-  @Input() aboutPage: IAboutPage;
-  modalRef: BsModalRef;
+  @Input() aboutPage?: IAboutPage;
+  modalRef?: BsModalRef;
   edit = {
     text: false
   }
@@ -47,8 +47,8 @@ export class AboutUsComponent implements OnInit {
   }
 
   changeCard(ev: any, index: number) {
-    this.aboutPage.cards[index].text = ev.text
-    this.aboutPage.cards[index].image = ev.image
+    this.aboutPage!.cards[index].text = ev.text
+    this.aboutPage!.cards[index].image = ev.image
   }
 
   changeCardTeam(ev: any) {
@@ -56,11 +56,11 @@ export class AboutUsComponent implements OnInit {
   }
 
   changeCardHome(ev: any) {
-    this.aboutPage.about.title = ev.title
+    this.aboutPage!.about.title = ev.title
     localStorage.setItem('aboutPage', JSON.stringify(this.aboutPage))
   }
 
-  editing(value) {
+  editing(value: any) {
     switch (value) {
       case 'teamTitle':
         this.edit.text = true;
@@ -75,7 +75,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   deleteTeam(index: number) {
-    this.aboutPage.team.splice(index, 1)
+    this.aboutPage!.team.splice(index, 1)
   }
 
   addTeam() {
@@ -84,7 +84,7 @@ export class AboutUsComponent implements OnInit {
       return
     }
 
-    this.aboutPage.team.push(this.card)
+    this.aboutPage!.team.push(this.card)
   }
 
   onSelectImage(ev: any) {

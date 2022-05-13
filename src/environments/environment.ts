@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   api: 'http://localhost:3000/',
   debbug: true,
-  apiUrl: 'http://localhost:3000/'
+  apiUrl: 'http://localhost:3000/',
+  apiEmail: '',
+  apiS3: '',
+  apiPushnotification: ''
 };
 
 /*

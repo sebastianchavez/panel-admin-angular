@@ -1,0 +1,10 @@
+nav{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
+
+.nav-transparent {
+    background-color: transparent !important;
+    transition: ease .3s;
+}

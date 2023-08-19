@@ -1,0 +1,14 @@
+.btn-sidemenu {}
+
+.nav-item {
+    ul{
+        inset: 100% auto auto auto !important;
+        right: 10px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .btn-sidemenu {
+        display: none;
+    }
+}

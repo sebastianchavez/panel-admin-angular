@@ -12,16 +12,23 @@
     position: absolute;
     height: 90vh;
     margin-top: 10vh;
-    width: 75%;
-    margin-left: 18em;
+    width: 100%;
+    padding-left: 15rem;
     transition: all .5s ease;
     overflow: auto;
 }
 
 .container-page-full {
-    margin-left: 5em;
-    transition: all .5s ease;
-    width: 93%;
+    transition: all 0.5s ease;
+    width: 100%;
+    margin: 0;
+    padding-left: 5rem;
+    margin-top: 10vh;
+}
+
+.responsive {
+    margin: 0;
+    padding: 0;
 }
 
 @media (max-width: 767px) {

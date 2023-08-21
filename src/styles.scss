@@ -27,6 +27,10 @@
     justify-content: center;
     height: 2rem;
 }
+
+.container-custom{
+    padding: 1rem
+}
 /* Importing Bootstrap SCSS file. */
 @import "./node_modules/bootstrap/scss/bootstrap";
 

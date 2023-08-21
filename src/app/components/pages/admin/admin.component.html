@@ -4,7 +4,7 @@
         <div class="nav-menu">
             <app-navbar [stateSidemenu]="stateSidemenu" (clickStateSidemenu)="changeStateSidemenu($event)"></app-navbar>
         </div>
-        <div class="container-page" [ngClass]="{'container-page-full': !stateSidemenu }">
+        <div class="container-page" [ngClass]="{'container-page-full': !stateSidemenu, 'responsive' : isResponsive }">
             <router-outlet></router-outlet>
         </div>
     </div>
